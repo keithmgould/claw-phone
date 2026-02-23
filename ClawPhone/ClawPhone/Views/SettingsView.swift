@@ -8,7 +8,7 @@ struct SettingsView: View {
     @State private var gatewayToken = ""
     @State private var elevenLabsKey = ""
     @State private var elevenLabsVoiceId = ""
-    @State private var model = ""
+    @State private var model = "claude-sonnet-4-6"
 
     private var allFieldsFilled: Bool {
         !gatewayUrl.isEmpty && !gatewayToken.isEmpty &&
@@ -27,9 +27,11 @@ struct SettingsView: View {
                 }
 
                 Section("Model") {
-                    TextField("main", text: $model)
-                        .autocapitalization(.none)
-                        .disableAutocorrection(true)
+                    Picker("Model", selection: $model) {
+                        Text("Sonnet 4.6 — Fast").tag("claude-sonnet-4-6")
+                        Text("Opus 4.6 — Smarter").tag("claude-opus-4-6")
+                        Text("Haiku 4.5 — Fastest").tag("claude-haiku-4-5-20251001")
+                    }
                 }
 
                 Section("ElevenLabs") {
@@ -44,7 +46,7 @@ struct SettingsView: View {
                     settings.gatewayToken = gatewayToken
                     settings.elevenLabsKey = elevenLabsKey
                     settings.elevenLabsVoiceId = elevenLabsVoiceId
-                    settings.model = model.isEmpty ? "main" : model
+                    settings.model = model
                     settings.save()
                     dismiss()
                 }
@@ -52,7 +54,7 @@ struct SettingsView: View {
                 .frame(maxWidth: .infinity)
 
                 Section {
-                    Text("v1.0.2")
+                    Text("v1.0.3")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)

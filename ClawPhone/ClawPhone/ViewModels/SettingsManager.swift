@@ -30,7 +30,7 @@ final class SettingsManager {
         gatewayToken = KeychainHelper.load(key: "gateway_token") ?? ""
         elevenLabsKey = KeychainHelper.load(key: "elevenlabs_key") ?? ""
         elevenLabsVoiceId = KeychainHelper.load(key: "elevenlabs_voice_id") ?? "cgSgspJ2msm6clMCkdW9"
-        model = KeychainHelper.load(key: "model") ?? "main"
+        model = KeychainHelper.load(key: "model") ?? "claude-sonnet-4-6"
     }
 
     func save() {

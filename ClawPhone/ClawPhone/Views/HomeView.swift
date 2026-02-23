@@ -29,6 +29,15 @@ struct HomeView: View {
         }
     }
 
+    private var shortModelName: String {
+        switch settings.model {
+        case "claude-sonnet-4-6": return "Sonnet 4.6"
+        case "claude-opus-4-6": return "Opus 4.6"
+        case "claude-haiku-4-5-20251001": return "Haiku 4.5"
+        default: return settings.model
+        }
+    }
+
     private var statusColor: Color {
         switch voiceLoop.state {
         case .idle: return .gray
@@ -98,11 +107,17 @@ struct HomeView: View {
                     }
                     .padding(.top, 12)
 
-                    HStack {
-                        Text(settings.model)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    HStack(alignment: .center) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(shortModelName)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            Text("v1.0.3")
+                                .font(.caption2)
+                                .foregroundColor(.secondary.opacity(0.6))
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 20)
 
                         Button {
                             if isRunning {
