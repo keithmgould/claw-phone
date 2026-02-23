@@ -143,7 +143,8 @@ final class VoiceLoopManager {
         let stream = ChatService.streamChat(
             messages: apiMessages,
             gatewayUrl: settings.sanitizedGatewayUrl,
-            gatewayToken: settings.gatewayToken
+            gatewayToken: settings.gatewayToken,
+            model: settings.model
         )
 
         var fullResponse = ""

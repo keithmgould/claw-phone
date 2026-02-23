@@ -6,6 +6,7 @@ final class SettingsManager {
     var gatewayToken: String = ""
     var elevenLabsKey: String = ""
     var elevenLabsVoiceId: String = ""
+    var model: String = ""
 
     var isConfigured: Bool {
         !gatewayUrl.isEmpty && !gatewayToken.isEmpty &&
@@ -29,6 +30,7 @@ final class SettingsManager {
         gatewayToken = KeychainHelper.load(key: "gateway_token") ?? ""
         elevenLabsKey = KeychainHelper.load(key: "elevenlabs_key") ?? ""
         elevenLabsVoiceId = KeychainHelper.load(key: "elevenlabs_voice_id") ?? "cgSgspJ2msm6clMCkdW9"
+        model = KeychainHelper.load(key: "model") ?? "main"
     }
 
     func save() {
@@ -36,5 +38,6 @@ final class SettingsManager {
         KeychainHelper.save(key: "gateway_token", value: gatewayToken)
         KeychainHelper.save(key: "elevenlabs_key", value: elevenLabsKey)
         KeychainHelper.save(key: "elevenlabs_voice_id", value: elevenLabsVoiceId)
+        KeychainHelper.save(key: "model", value: model)
     }
 }

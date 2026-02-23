@@ -41,7 +41,8 @@ enum ChatService {
     static func streamChat(
         messages: [[String: String]],
         gatewayUrl: String,
-        gatewayToken: String
+        gatewayToken: String,
+        model: String
     ) -> AsyncThrowingStream<String, Error> {
         AsyncThrowingStream { continuation in
             let task = Task {
@@ -58,7 +59,7 @@ enum ChatService {
                     request.setValue("text/event-stream", forHTTPHeaderField: "Accept")
 
                     let body: [String: Any] = [
-                        "model": "main",
+                        "model": model,
                         "user": "claw-phone-user",
                         "messages": messages,
                         "max_tokens": 500,

@@ -98,21 +98,31 @@ struct HomeView: View {
                     }
                     .padding(.top, 12)
 
-                    Button {
-                        if isRunning {
-                            voiceLoop.stop()
-                        } else {
-                            voiceLoop.start(settings: settings)
+                    HStack {
+                        Text(settings.model)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+
+                        Button {
+                            if isRunning {
+                                voiceLoop.stop()
+                            } else {
+                                voiceLoop.start(settings: settings)
+                            }
+                        } label: {
+                            Image(systemName: isRunning ? "stop.fill" : "mic.fill")
+                                .font(.system(size: 30))
+                                .frame(width: 80, height: 80)
+                                .background(isRunning ? Color.red : Color.blue)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
                         }
-                    } label: {
-                        Image(systemName: isRunning ? "stop.fill" : "mic.fill")
-                            .font(.system(size: 30))
-                            .frame(width: 80, height: 80)
-                            .background(isRunning ? Color.red : Color.blue)
-                            .foregroundColor(.white)
-                            .clipShape(Circle())
+                        .disabled(!settings.isConfigured && !isRunning)
+
+                        Spacer()
+                            .frame(maxWidth: .infinity)
                     }
-                    .disabled(!settings.isConfigured && !isRunning)
                     .padding(.bottom, 20)
                 }
             }

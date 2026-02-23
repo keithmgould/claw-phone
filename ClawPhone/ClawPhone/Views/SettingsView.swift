@@ -8,6 +8,7 @@ struct SettingsView: View {
     @State private var gatewayToken = ""
     @State private var elevenLabsKey = ""
     @State private var elevenLabsVoiceId = ""
+    @State private var model = ""
 
     private var allFieldsFilled: Bool {
         !gatewayUrl.isEmpty && !gatewayToken.isEmpty &&
@@ -25,6 +26,12 @@ struct SettingsView: View {
                     SecureField("Gateway Token", text: $gatewayToken)
                 }
 
+                Section("Model") {
+                    TextField("main", text: $model)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                }
+
                 Section("ElevenLabs") {
                     SecureField("API Key", text: $elevenLabsKey)
                     TextField("Voice ID (e.g. cgSgspJ2msm6clMCkdW9)", text: $elevenLabsVoiceId)
@@ -37,6 +44,7 @@ struct SettingsView: View {
                     settings.gatewayToken = gatewayToken
                     settings.elevenLabsKey = elevenLabsKey
                     settings.elevenLabsVoiceId = elevenLabsVoiceId
+                    settings.model = model.isEmpty ? "main" : model
                     settings.save()
                     dismiss()
                 }
@@ -44,7 +52,7 @@ struct SettingsView: View {
                 .frame(maxWidth: .infinity)
 
                 Section {
-                    Text("v1.0.1")
+                    Text("v1.0.2")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -58,6 +66,7 @@ struct SettingsView: View {
                 gatewayToken = settings.gatewayToken
                 elevenLabsKey = settings.elevenLabsKey
                 elevenLabsVoiceId = settings.elevenLabsVoiceId
+                model = settings.model
             }
         }
     }
