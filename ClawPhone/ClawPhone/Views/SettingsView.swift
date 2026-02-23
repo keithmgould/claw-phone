@@ -44,7 +44,7 @@ struct SettingsView: View {
                 .frame(maxWidth: .infinity)
 
                 Section {
-                    Text("v1.0.0")
+                    Text("v1.0.1")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .center)

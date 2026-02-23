@@ -144,6 +144,11 @@ struct HomeView: View {
                     showSettings = true
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: .startListeningIntent)) { _ in
+                if !isRunning && settings.isConfigured {
+                    voiceLoop.start(settings: settings)
+                }
+            }
         }
         .tint(.purple)
     }
