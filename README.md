@@ -10,14 +10,6 @@ A voice-first conversational assistant for iOS. Tap a button, speak naturally, a
 4. **Loop** — automatically returns to listening after the response finishes
 5. **Barge-in** — start talking while the assistant speaks and it stops to listen
 
-## Why Native Swift?
-
-This app was originally built in Flutter, but three audio plugins fighting over `AVAudioSession` caused STT/playback hangs and made barge-in impossible. Native Swift gives us:
-
-- **One unified `AVAudioEngine`** — no plugin conflicts
-- **Voice processing / echo cancellation** — the mic ignores speaker output, enabling barge-in
-- **Full audio pipeline control** — configure once, never reconfigure
-
 ## Requirements
 
 - iOS 17.0+
