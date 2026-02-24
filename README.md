@@ -39,7 +39,7 @@ A voice-first conversational assistant for iOS. Tap a button, speak naturally, a
 ├────────────┬────────────┬──────────────┬─────────────┤
 │   Speech   │    Chat    │     TTS      │    Audio    │
 │ Recognizer │  Service   │   Service    │   Manager   │
-│   (STT)    │   (LLM)   │ (ElevenLabs) │  (Engine)   │
+│   (STT)    │   (LLM)    │ (ElevenLabs) │  (Engine)   │
 └────────────┴────────────┴──────────────┴─────────────┘
 ```
 
