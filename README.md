@@ -33,14 +33,14 @@ A voice-first conversational assistant for iOS. Tap a button, speak naturally, a
 ## Architecture
 
 ```
-┌─────────────────────────────────────────────┐
-│              VoiceLoopManager               │
-│         (state machine orchestrator)        │
-├─────────┬───────────┬───────────┬───────────┤
-│  Speech │   Chat    │    TTS    │   Audio   │
-│Recognizer│  Service  │  Service  │  Manager  │
-│  (STT)  │  (LLM)   │(ElevenLabs)│(Engine)  │
-└─────────┴───────────┴───────────┴───────────┘
+┌──────────────────────────────────────────────────────┐
+│                  VoiceLoopManager                    │
+│             (state machine orchestrator)             │
+├────────────┬────────────┬──────────────┬─────────────┤
+│   Speech   │    Chat    │     TTS      │    Audio    │
+│ Recognizer │  Service   │   Service    │   Manager   │
+│   (STT)    │   (LLM)   │ (ElevenLabs) │  (Engine)   │
+└────────────┴────────────┴──────────────┴─────────────┘
 ```
 
 **State machine:** `idle` → `listening` → `processing` → `speaking` → `listening` → ...
